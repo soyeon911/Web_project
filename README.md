@@ -9,5 +9,5 @@
 
 <h1>2. 유저 분석 및 페르소나 설정</h1>
 <br>
-<a href = "../Desktop/24-2학기/웹프로그래밍/img/Persona.png">
 
+![Persona](img/Persona.png)
