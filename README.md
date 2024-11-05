@@ -6,17 +6,19 @@
 <p>- 박소연 | DB구성</p>
 <p>- 최상혁 | 조장, 페이지 구현</p>
 <br>
-
+<p>
 <h2>2. Set the Persona</h2>
 <br>
 
 ![Persona](img/Persona.png)
-
+</p>
+<p>
 <h2>3. Lean Canvas </h2>
 <br>
 
-![Lean Canvas](img/LeanCanvas.png)
-
+![LeanCanvas](img/LeanCanvas.png)
+</p>
+<p>
 <h2>4. Story Board </h2>
 <br>
 
@@ -36,3 +38,4 @@
 ![Storyboard](img/Storyboard14.png)
 ![Storyboard](img/Storyboard15.png)
 ![Storyboard](img/Storyboard16.png)
+</p>
