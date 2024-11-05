@@ -15,7 +15,7 @@
 <h2>3. Lean Canvas </h2>
 <br>
 
-![Lean Canvas](img/Leancanvas.png)
+![Lean Canvas](img/LeanCanvas.png)
 
 <h2>4. Story Board </h2>
 <br>
