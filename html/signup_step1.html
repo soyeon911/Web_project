@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -113,6 +114,10 @@
             justify-content: center;
             border-top-left-radius: 10%;
             border-top-right-radius: 10%;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* 중앙 정렬 */
+            justify-content: flex-start;
 
         }
 
@@ -141,72 +146,57 @@
             font-weight: 700;
             margin-bottom: 5px;
             color: #171A1F;
-            width: 100%; /* textarea 너비에 맞게 설정 */
+            width: 320px; /* 입력 칸과 동일한 너비 */
             margin-inline-start: 180px;
             text-align: left; /* 좌측 정렬 */
+            margin-left: 0;
         }
-        /* 공통 스타일 */
-        input[type="text"], 
-input[type="password"], 
-input[type="email"], 
-input[type="name"] {
-    font-family: Archivo, sans-serif;
-    width: 320px; /* 공통 너비 */
-    max-width: 100%; /* 반응형 처리 */
-    height: 40px; /* 높이를 통일 */
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    box-sizing: border-box; /* 패딩 포함 너비 계산 */
-    outline: none; /* 포커스 스타일 제거 */
-}
-        input[type = "name"] {
+        /* 공통 입력 필드 스타일 */
+        input[type="text"],
+        input[type="email"], 
+        input[type="password"], 
+        input[type="name"] {
             font-family: Archivo, sans-serif;
-            width: 320px; /* input 영역 너비를 100%로 설정 */
-            max-width: 100%;
-            height: 15px; /* 높이를 적당히 설정 */
+            width: 320px; /* 공통 너비 */
+            max-width: 100%; /* 반응형 처리 */
+            height: 35px; /* 높이를 통일 */
             padding: 10px;
             font-size: 16px;
             border: 1px solid #ccc;
             border-radius: 5px;
             background-color: #f9f9f9;
+            box-sizing: border-box; /* 패딩 포함 너비 계산 */
+            outline: none; /* 포커스 스타일 제거 */
+            margin-bottom: 15px; /* 필드 간 간격 추가 */
         }
+
         /* 이메일 도메인 래퍼 */
-.email-wrapper {
-    display: flex; /* 도메인 텍스트와 입력 필드 나란히 */
-    align-items: center;
-    width: 320px; /* 공통 너비 */
-    border: 1px solid #ccc; /* input과 동일한 테두리 */
-    border-radius: 5px;
-    overflow: hidden; /* 내용 넘침 방지 */
-    background-color: #f9f9f9; /* 동일 배경색 */
-}
-
-.email-wrapper input[type="text"] {
-    border: none; /* 테두리 제거 */
-    flex: 1; /* 입력 필드 공간 채우기 */
-}
-
-.email-wrapper .email-domain {
-    font-size: 16px;
-    padding: 10px;
-    color: #999; /* 옅은 텍스트 색상 */
-    background-color: transparent;
-}
-
-
-        input[type="password"] {
-            width: 320px; /* input 영역 너비를 100%로 설정 */
-            max-width: 100%;
-            height: 15px; /* 높이를 적당히 설정 */
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
+        .email-wrapper {
+            display: flex; /* 도메인 텍스트와 입력 필드 나란히 */
+            align-items: center;
+            width: 320px; /* 공통 너비 */
+            height: 35px; /* 다른 입력란과 동일 높이 */
+            border: 1px solid #ccc; /* input과 동일한 테두리 */
             border-radius: 5px;
-            background-color: #f9f9f9;
+            overflow: hidden; /* 내용 넘침 방지 */
+            background-color: #f9f9f9; /* 동일 배경색 */
+            margin-bottom: 20px; /* 필드 간 간격 추가 */
         }
+
+        .email-wrapper input[type="text"] {
+            border: none; /* 테두리 제거 */
+            flex: 1; /* 입력 필드 공간 채우기 */
+            padding: 0 10px;
+            margin-top: auto;
+        }
+
+        .email-wrapper .email-domain {
+            font-size: 16px;
+            padding: 10px;
+            color: #999; /* 옅은 텍스트 색상 */
+            background-color: transparent;
+        }
+
         /* 하단 설명 및 버튼 */
         .bottom-container {
             z-index: 1;
@@ -218,7 +208,7 @@ input[type="name"] {
             width: 100%;
             height: 100%;
             margin-top: auto;        /* 하단에 고정 */
-            margin-bottom : 50px;
+            margin-bottom : 30px;
         }
         .bottom-button {
             margin-top: 20px;
@@ -272,17 +262,14 @@ input[type="name"] {
                 <img src = "../img/user_img1.png" alt="user 이미지">
 
                 <h3>별명</h3>
-                <input type = "name" cols = "40" rows = "1">
+                <input type = "name" placeholder="name">
                 <h3>이메일</h3>
                 <div class="email-wrapper">
-                    <input type="text" id="email" name="email" placeholder="Enter your email" required>
+                    <input type="text" id="email" name="email" placeholder="Email"required onfocus="clearDomain()" onblur="restoreDomain()">
                     <span class="email-domain">@yonsei.ac.kr</span>
                 </div>
-                <p id="error-message" style="color: red; font-size: 14px; margin-top: 5px; display: none;">
-                    이메일 형식이 올바르지 않습니다. @yonsei.ac.kr로 끝나야 합니다.
-                </p>
                 <h3>비밀번호(Password)</h3>
-                <input type="password" name="password" cols="40" rows="1">
+                <input type="password" name="password" placeholder="password">
             </div>
         </div>
         
@@ -292,7 +279,22 @@ input[type="name"] {
     </div>
 
    
-    <!-- swiper-init.js 파일 불러오기 -->
-    <script src="../front/js/email.js"></script>
+    <script>
+        const emailInput = document.getElementById('email');
+        const emailDomain = document.querySelector('.email-domain');
+    
+        // 입력 칸 포커스 시 도메인 제거
+        function clearDomain() {
+            emailDomain.style.display = 'none';
+        }
+    
+        // 입력 칸 포커스 해제 시 도메인 복원
+        function restoreDomain() {
+            if (!emailInput.value.includes('@')) {
+                emailInput.value += '@yonsei.ac.kr';
+            }
+            emailDomain.style.display = 'inline';
+        }
+    </script>
 </body>
 </html>
