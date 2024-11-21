@@ -13,25 +13,21 @@
             margin: 0;
             font-family: 'Inter', 'Archivo', sans-serif;
             background-color: #f5f5f5;
+            height: 100%;
         }
         /* 페이지 전체 컨테이너 */
         .container {
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px;
-            text-align: center;
-            position: relative;
-            min-height: 100vh; /* 화면 전체 높이 */
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between; /* 상단, 중앙, 하단 분리 */
         }
 
         /* 광고 배너 */
         .ad-banner {
             background-color: #e0e0e0;
             text-align: center;
-            padding: 10px 0;
+            padding: 10px;
+            font-size: 14px;
         }
 
         /* 헤더 */
@@ -49,6 +45,8 @@
 
         .header-links {
             font-size: 16px;
+            color: #555;
+            text-decoration: none;
         }
 
         /* 메인 컨텐츠 */
@@ -58,7 +56,8 @@
             font-size: 30px;
             font-family: Archivo;
             border-radius: 15px;
-            padding: 10px 0;
+            padding: 10px;
+            text-align: center;
         }
 
         .main-content hr {
@@ -74,6 +73,11 @@
             margin-top: 45px;
         }
 
+        .main-content h1 {
+            font-size: 36px;
+            margin: 20px 0;
+        }
+
         .main-content h3 {
             color:  #171A1FFF;
             margin: 0;
@@ -84,91 +88,90 @@
         }
 
         .link-button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 56px;
-            width: 175px;
-            padding: 0;
-            background-color : #DE3B40FF;
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #de3b40;
+            color: #fff;
             border-radius: 6px;
             border: none;
-            color: #fff;
-            font-family: Inter, sans-serif;
-            font-size: 24px;
-            line-height: 36px;
-            font-weight: 700;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
             cursor: pointer;
         }
         
-        .b1 {
-            margin-bottom: 100px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: white;
-            background-color: #1D2128FF;
-            color: #fff;
-            font-family: Inter, sans-serif;
-            font-size: 24px;
-            line-height: 36px;
-            font-weight: 700;
+        /* 오늘의 일정 */
+        .schedule {
+            margin-top: 30px;
         }
-
-        .box {
-            height: 400px;
-            display: flex;
-            justify-content: left;
-            align-items: left;
-            margin-top: 45px;
-            border: white;
-            background-color: #1D2128FF;
-            color: #fff;
-            font-family: Inter, sans-serif;
-            font-size: 24px;
-            line-height: 36px;
-            font-weight: 700;
-        }
-
-        .b2 {
-            height: 400px;
-            float: left;
-            justify-content: left;
-            align-items: left;
-            border: white;
-            background-color: #1D2128FF;
-            color: #fff;
-            font-family: Inter, sans-serif;
-            font-size: 24px;
-            line-height: 36px;
-            font-weight: 700;
-        }
-
-        .b2 h3 {
-            font-size : 20px;
-            float: left;
-            justify-content: left;
-            align-items: left;
-            font-weight: 400;
-        }
-
-        .b3 {
-            height: 400px;
-            float: left;
-            justify-content: left;
-            align-items: left;
-            border: white;
-            background-color: #1D2128FF;
-            color: #fff;
-            font-family: Inter, sans-serif;
-            font-size: 24px;
-            line-height: 36px;
-            font-weight: 700;
-        }
-
-
         
+        .schedule-title {
+            background-color: #1d2128;
+            color:#fff;
+            text-align: center;
+            padding: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            border: white;
+        }
+
+        .schedule-content {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }   
+
+        .schedule-box {
+            flex: 1;
+            min-width: 45%; /* 최소 너비를 설정하여 2개 박스가 가로로 나란히 배치되게 함 */
+            background-color: #1d2128;
+            color: #fff;
+            border: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            min-height: 100%;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .schedule-box h2 {
+            font-size: 25px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-left: 10px;
+        }
+
+        .schedule-box h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-weight: 400;
+            padding-left: 10px;
+        }
+
+        .schedule-item {
+            background-color: #333;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .schedule-item span {
+            font-weight: bold;
+        }
+
+        /* 주의사항 */
+        .note {
+            font-size: 12px;
+            color: #777;
+            margin-top: auto;
+            text-align: left;
+        }
     </style>
 </head>
 <body>
@@ -204,7 +207,7 @@
             <div class = "schedule-content">
                 <div class = "schedule-box">
                     <!-- 튜터 일정 -->
-                    <h3>튜터(Tutor)</h3>
+                    <h2>튜터(Tutor)</h2>
                     <h3>오늘의 일정은 <span>'2건'</span>입니다.</h3>
                     <div class = "schedule-item">
                         <span>@@님</span>과의 <span>10월 31일 19:00~20:00까지</span> 튜링크 예약이 있습니다.
@@ -212,20 +215,25 @@
                     <div class = "schedule-item">
                         <span>@@님</span>과의 <span>10월 31일 20:00~21:00까지</span> 튜링크 예약이 있습니다.
                     </div>
-
-                    <!-- 튜터 일정 -->
-                    <h3>튜터(Tutor)</h3>
+                    <!-- 주의사항 -->
+                    <div class="note">
+                        ※ 자세한 사항은 회원가입 시 기재한 연락처로 문의 바랍니다.
+                    </div>
+                </div>
+                <div class = "schedule-box">
+                    <!-- 튜티 일정 -->
+                    <h2>튜티(Tutee)</h2>
                     <h3>오늘의 일정은 <span>'1건'</span>입니다.</h3>
                     <div class = "schedule-item">
                         <span>@@님</span>과의 <span>10월 31일 17:00~18:00까지</span> 튜링크 예약이 있습니다.
                     </div>
+                    
+                    <!-- 주의사항 -->
+                    <div class="note">
+                        ※ 자세한 사항은 회원가입 시 기재한 연락처로 문의 바랍니다.
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <!-- 주의사항 -->
-        <div class="note">
-            ※ 자세한 사항은 회원가입 시 기재한 연락처로 문의 바랍니다.
         </div>
     </div>
 </body>
