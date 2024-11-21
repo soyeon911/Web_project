@@ -47,6 +47,8 @@
             font-size: 16px;
             color: #555;
             text-decoration: none;
+            position: right;
+            margin-top: auto;
         }
 
         /* 메인 컨텐츠 */
@@ -64,6 +66,8 @@
             border: 0;
             background-color: black;
             height: 3px;
+            width: calc(100% + 40px); /* 전체 너비 + 좌우 패딩 값 */
+            margin: -20px -20px; /* 좌우 패딩 제거 */
         }
 
         .intro {
@@ -75,11 +79,12 @@
 
         .main-content h1 {
             font-size: 36px;
-            margin: 20px 0;
+            text-align: center;
+            padding: 15px;
         }
 
         .main-content h3 {
-            color:  #171A1FFF;
+            color:#171A1FFF;
             margin: 0;
             font-family: Inter;
             font-size: 35px;
@@ -184,7 +189,7 @@
                 </a>
             </div>
             <div class="header-links">
-                    <a href="../html/user_edit.html">회원정보 수정하기</a>
+                <a href="../html/user_edit.html">회원정보 수정하기</a>
             </div>
         </header>
 
