@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tulink 비로그인 홈페이지</title>
+    <title>회원정보수정 페이지</title>
 
     <!-- Swiper.js CSS CDN -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
@@ -53,7 +53,6 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 0;
-            border-bottom: 2px solid #F1F1F1; /* 헤더 하단 경계선 */
         }
 
         .header-logo img {
@@ -84,7 +83,7 @@
             position: absolute;
             bottom: 20px;
             left: 50%;
-            height: 650px;
+            height: 750px;
             transform: translateX(-50%);
             width: 800px;
             background-color: #12177A;
@@ -103,7 +102,7 @@
             position: absolute;
             bottom: 0;
             left: 50%;
-            height: 620px;
+            height: 720px;
             transform: translateX(-50%);
             width: 730px;
             background-color: #FFFFFF;
@@ -136,21 +135,38 @@
             background-color: #FFFFFF; /* 배경색 */
             padding: 10px; /* 여백 추가 */
         }
+
+        .container-tutoring {
+            width: 90%; /* 부모 크기에 맞게 확장 */
+            margin: 20px 10px; /* 위아래 여백 */
+            padding: 20px; /* 내부 여백 */
+            border: 2px solid #555; /* 테두리 추가로 가시성 개선 */
+            border-radius: 10px; /* 모서리 둥글게 */
+            background-color: #F9FAFB; /* 밝은 배경 */
+        }
        
+        /* Central Dropdown */
+        .central-dropdown {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
 
         /* h3 Tag Styling */
+        .central-dropdown h3,
         .dropdown-container h3 {
-            margin: 5px -5px 10px;
-            padding-right: 10px;
-            font-size: 14px;
+            margin: 10px 0 10px;
+            padding-right: 8px;
+            font-size: 12px;
             color: #333;
         }
 
         /* Dropdown Container */
         .dropdown-container {
             display: flex;
+            position: relative;
             justify-content: space-around;
-            gap: 20px;
+            gap: 10px;
             align-items: center;
         }
 
@@ -167,7 +183,7 @@
             border: 2px solid #171A1F;
             color: #555;
             padding: 10px 20px;
-            font-size: 16px;
+            font-size: 13px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -185,7 +201,7 @@
         .dropdown-content {
             display: none;
             color:#171A1F;
-            position: relative;
+            position: absolute;
             background-color: white;
             min-width: 200px;
             border: 1px solid #ccc;
@@ -272,51 +288,189 @@
                 <h1>회원 가입</h1>
                 <img src = "../img/user_img1.png" alt="user 이미지">
 
+                <!-- 소속 전공 드롭박스 (중앙 배치) -->
                  
-                <!-- 튜터링 가능 요일 및 시간대 -->
+                <div class="central-dropdown">
+                    <h3>현재소속전공</h3>
+                    <div class="dropdown">
+                        <button class="dropbtn" onclick="toggleDropdown('affiliation-dropdown')">
+                            <span id="affiliation-selected">선택하기</span>
+                            <span class="material-icons">arrow_drop_down</span>
+                        </button>
+                        <div class="dropdown-content" id="affiliation-dropdown">
+                            <div onclick="selectAffiliation('소프트웨어학부')">소프트웨어학부</div>
+                            <div onclick="selectAffiliation('경영학부')">경영학부</div>
+                            <div onclick="selectAffiliation('디자인예술학부')">디자인예술학부</div>
+                            <div onclick="selectAffiliation('AI반도체학과')">AI반도체학과</div>
+                            <div onclick="selectAffiliation('글로벌행정학과')">글로벌행정학과</div>
+                            <div onclick="selectAffiliation('보건행정학부')">보건행정학부</div>
+                            <div onclick="selectAffiliation('데이터사이언스학부')">데이터사이언스학부</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class = "container-tutoring">
+                    <!-- 기존 Major & SubMajor 드롭박스 -->
+                    <div class="dropdown-container">
+                        <h3>튜터링할 전공</h3>
+                        <!-- Major 드롭다운 -->
+                        <div class="dropdown">
+                            <button class="dropbtn" onclick="toggleDropdown('major-dropdown')">
+                                <span id="major-selected">선택하기</span>
+                                <span class="material-icons">arrow_drop_down</span>
+                            </button>
+                            <div class="dropdown-content" id="major-dropdown">
+                                <div onclick="selectMajor('소프트웨어학부')">소프트웨어학부</div>
+                                <div onclick="selectMajor('경영학부')">경영학부</div>
+                                <div onclick="selectMajor('디자인예술학부')">디자인예술학부</div>
+                                <div onclick="selectMajor('AI반도체학과')">AI반도체학과</div>
+                                <div onclick="selectMajor('글로벌행정학과')">글로벌행정학과</div>
+                                <div onclick="selectMajor('보건행정학부')">보건행정학부</div>
+                                <div onclick="selectMajor('데이터사이언스학부')">데이터사이언스학부</div>
+                            </div>
+                        </div>
+
+                        <h3>튜터링할 전공</h3>
+                        <!-- Major 드롭다운 -->
+                        <div class="dropdown">
+                            <button class="dropbtn" onclick="toggleDropdown('major-dropdown')">
+                                <span id="major-selected">선택하기</span>
+                                <span class="material-icons">arrow_drop_down</span>
+                            </button>
+                            <div class="dropdown-content" id="major-dropdown">
+                                <div onclick="selectMajor('소프트웨어학부')">소프트웨어학부</div>
+                                <div onclick="selectMajor('경영학부')">경영학부</div>
+                                <div onclick="selectMajor('디자인예술학부')">디자인예술학부</div>
+                                <div onclick="selectMajor('AI반도체학과')">AI반도체학과</div>
+                                <div onclick="selectMajor('글로벌행정학과')">글로벌행정학과</div>
+                                <div onclick="selectMajor('보건행정학부')">보건행정학부</div>
+                                <div onclick="selectMajor('데이터사이언스학부')">데이터사이언스학부</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-container">
+                        <!-- SubMajor 드롭다운 -->
+                        <h3>튜터링할 세부전공</h3>
+                        <div class="dropdown">
+                            <button class="dropbtn" onclick="toggleDropdown('submajor-dropdown')">
+                                <span id="submajor-selected">선택하기(복수)</span>
+                                <span class="material-icons">arrow_drop_down</span>
+                            </button>
+                            <div class="dropdown-content" id="submajor-dropdown">
+                                <div onclick="selectSubMajor('알고리즘기초')">알고리즘기초</div>
+                                <div onclick="selectSubMajor('데이터구조론')">데이터구조론</div>
+                                <div onclick="selectSubMajor('세부전공01')">세부전공01</div>
+                                <div onclick="selectSubMajor('세부전공02')">세부전공02</div>
+                                <div onclick="selectSubMajor('세부전공03')">세부전공03</div>
+                                <div onclick="selectSubMajor('세부전공04')">세부전공04</div>
+                                <div onclick="selectSubMajor('세부전공05')">세부전공05</div>
+                            </div>
+                        </div>
+
+                        <!-- SubMajor 드롭다운 -->
+                        <h3>튜터링할 세부전공</h3>
+                        <div class="dropdown">
+                            <button class="dropbtn" onclick="toggleDropdown('submajor-dropdown')">
+                                <span id="submajor-selected">선택하기(복수)</span>
+                                <span class="material-icons">arrow_drop_down</span>
+                            </button>
+                            <div class="dropdown-content" id="submajor-dropdown">
+                                <div onclick="selectSubMajor('알고리즘기초')">알고리즘기초</div>
+                                <div onclick="selectSubMajor('데이터구조론')">데이터구조론</div>
+                                <div onclick="selectSubMajor('세부전공01')">세부전공01</div>
+                                <div onclick="selectSubMajor('세부전공02')">세부전공02</div>
+                                <div onclick="selectSubMajor('세부전공03')">세부전공03</div>
+                                <div onclick="selectSubMajor('세부전공04')">세부전공04</div>
+                                <div onclick="selectSubMajor('세부전공05')">세부전공05</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class = "container-tutoring">
+                    <!-- 튜터링 가능 요일 및 시간대 -->
                 <div class="dropdown-container">
                     <h3>튜터링 가능 요일</h3>
                     <!-- 튜터링 가능 요일 드롭다운 -->
                     <div class="dropdown">
-                    <button class="dropbtn" onclick="toggleDropdown('day-dropdown')">
-                        <span id="day-selected">선택하기</span>
-                        <span class="material-icons">arrow_drop_down</span>
-                    </button>
-                    <div class="dropdown-content" id="day-dropdown">
-                        <div onclick="selectDay('월')">월</div>
-                        <div onclick="selectDay('화')">화</div>
-                        <div onclick="selectDay('수')">수</div>
-                        <div onclick="selectDay('목')">목</div>
-                        <div onclick="selectDay('금')">금</div>
-                        <div onclick="selectDay('토')">토</div>
-                        <div onclick="selectDay('일')">일</div>
-                    </div>
+                        <button class="dropbtn" onclick="toggleDropdown('day-dropdown')">
+                            <span id="day-selected">선택하기</span>
+                            <span class="material-icons">arrow_drop_down</span>
+                        </button>
+                        <div class="dropdown-content" id="day-dropdown">
+                            <div onclick="selectDay('월')">월</div>
+                            <div onclick="selectDay('화')">화</div>
+                            <div onclick="selectDay('수')">수</div>
+                            <div onclick="selectDay('목')">목</div>
+                            <div onclick="selectDay('금')">금</div>
+                            <div onclick="selectDay('토')">토</div>
+                            <div onclick="selectDay('일')">일</div>
+                        </div>
                     </div>
 
-                    <!-- SubMajor 드롭다운 -->
-                    <h3>튜터링 가능 시간대</h3>
+                    <h3>튜터링 가능 요일</h3>
+                    <!-- 튜터링 가능 요일 드롭다운 -->
                     <div class="dropdown">
-                    <button class="dropbtn" onclick="toggleDropdown('hour-dropdown')">
-                        <span id="hour-selected">선택하기</span>
-                        <span class="material-icons">arrow_drop_down</span>
-                    </button>
-                    <div class="dropdown-content" id="hour-dropdown">
-                        <div onclick="selectHour('1:00~2:00')">1:00~2:00</div>
-                        <div onclick="selectHour('2:00~3:00')">2:00~3:00</div>
-                        <div onclick="selectHour('3:00~4:00')">3:00~4:00</div>
-                        <div onclick="selectHour('4:00~5:00')">4:00~5:00</div>
-                        <div onclick="selectHour('5:00~6:00')">5:00~6:00</div>
-                        <div onclick="selectHour('6:00~7:00')">6:00~7:00</div>
-                        <div onclick="selectHour('7:00~8:00')">7:00~8:00</div>
-                    </div>
+                        <button class="dropbtn" onclick="toggleDropdown('day-dropdown')">
+                            <span id="day-selected">선택하기</span>
+                            <span class="material-icons">arrow_drop_down</span>
+                        </button>
+                        <div class="dropdown-content" id="day-dropdown">
+                            <div onclick="selectDay('월')">월</div>
+                            <div onclick="selectDay('화')">화</div>
+                            <div onclick="selectDay('수')">수</div>
+                            <div onclick="selectDay('목')">목</div>
+                            <div onclick="selectDay('금')">금</div>
+                            <div onclick="selectDay('토')">토</div>
+                            <div onclick="selectDay('일')">일</div>
+                        </div>
                     </div>
                 </div>
                 
+                
+                <div class="dropdown-container">
+                    <!-- SubMajor 드롭다운 -->
+                    <h3>튜터링 가능 시간대</h3>
+                    <div class="dropdown">
+                        <button class="dropbtn" onclick="toggleDropdown('hour-dropdown')">
+                            <span id="hour-selected">선택하기</span>
+                            <span class="material-icons">arrow_drop_down</span>
+                        </button>
+                        <div class="dropdown-content" id="hour-dropdown">
+                            <div onclick="selectHour('1:00~2:00')">1:00~2:00</div>
+                            <div onclick="selectHour('2:00~3:00')">2:00~3:00</div>
+                            <div onclick="selectHour('3:00~4:00')">3:00~4:00</div>
+                            <div onclick="selectHour('4:00~5:00')">4:00~5:00</div>
+                            <div onclick="selectHour('5:00~6:00')">5:00~6:00</div>
+                            <div onclick="selectHour('6:00~7:00')">6:00~7:00</div>
+                            <div onclick="selectHour('7:00~8:00')">7:00~8:00</div>
+                        </div>
+                    </div>
+
+                    <h3>튜터링 가능 시간대</h3>
+                    <div class="dropdown">
+                        <button class="dropbtn" onclick="toggleDropdown('hour-dropdown')">
+                            <span id="hour-selected">선택하기</span>
+                            <span class="material-icons">arrow_drop_down</span>
+                        </button>
+                        <div class="dropdown-content" id="hour-dropdown">
+                            <div onclick="selectHour('1:00~2:00')">1:00~2:00</div>
+                            <div onclick="selectHour('2:00~3:00')">2:00~3:00</div>
+                            <div onclick="selectHour('3:00~4:00')">3:00~4:00</div>
+                            <div onclick="selectHour('4:00~5:00')">4:00~5:00</div>
+                            <div onclick="selectHour('5:00~6:00')">5:00~6:00</div>
+                            <div onclick="selectHour('6:00~7:00')">6:00~7:00</div>
+                            <div onclick="selectHour('7:00~8:00')">7:00~8:00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
         
         <div class="bottom-container">
-            <button class="bottom-button" onclick="window.location.href='mainpage.html'">다음</button>
+            <button class="bottom-button" onclick="window.location.href='mypage.html'">수정완료</button>
         </div>
     </div>
 
