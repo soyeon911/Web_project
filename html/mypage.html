@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지</title>
+
+    <!-- Swiper.js CSS CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+    <style>
+        .body {
+            margin: 0;
+            font-family: 'Inter', 'Archivo', sans-serif;
+            background-color: #f5f5f5;
+        }
+        /* 페이지 전체 컨테이너 */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+            position: relative;
+            min-height: 100vh; /* 화면 전체 높이 */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* 상단, 중앙, 하단 분리 */
+        }
+
+        /* 광고 배너 */
+        .ad-banner {
+            background-color: #e0e0e0;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        /* 헤더 */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .header-logo img {
+            width: 120px;
+            height: auto;
+        }
+
+        .header-links {
+            font-size: 16px;
+        }
+
+        /* 메인 컨텐츠 */
+        .main-content {
+            background-color: #fff;
+            color: black;
+            font-size: 30px;
+            font-family: Archivo;
+            border-radius: 15px;
+            padding: 10px 0;
+        }
+
+        .main-content hr {
+            border: 0;
+            background-color: black;
+            height: 3px;
+        }
+
+        .intro {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 45px;
+        }
+
+        .main-content h3 {
+            color:  #171A1FFF;
+            margin: 0;
+            font-family: Inter;
+            font-size: 35px;
+            line-height: 56px;
+            font-weight: 400;
+        }
+
+        .link-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 56px;
+            width: 175px;
+            padding: 0;
+            background-color : #DE3B40FF;
+            border-radius: 6px;
+            border: none;
+            color: #fff;
+            font-family: Inter, sans-serif;
+            font-size: 24px;
+            line-height: 36px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        
+        .b1 {
+            margin-bottom: 100px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: white;
+            background-color: #1D2128FF;
+            color: #fff;
+            font-family: Inter, sans-serif;
+            font-size: 24px;
+            line-height: 36px;
+            font-weight: 700;
+        }
+
+        .box {
+            height: 400px;
+            display: flex;
+            justify-content: left;
+            align-items: left;
+            margin-top: 45px;
+            border: white;
+            background-color: #1D2128FF;
+            color: #fff;
+            font-family: Inter, sans-serif;
+            font-size: 24px;
+            line-height: 36px;
+            font-weight: 700;
+        }
+
+        .b2 {
+            height: 400px;
+            float: left;
+            justify-content: left;
+            align-items: left;
+            border: white;
+            background-color: #1D2128FF;
+            color: #fff;
+            font-family: Inter, sans-serif;
+            font-size: 24px;
+            line-height: 36px;
+            font-weight: 700;
+        }
+
+        .b2 h3 {
+            font-size : 20px;
+            float: left;
+            justify-content: left;
+            align-items: left;
+            font-weight: 400;
+        }
+
+        .b3 {
+            height: 400px;
+            float: left;
+            justify-content: left;
+            align-items: left;
+            border: white;
+            background-color: #1D2128FF;
+            color: #fff;
+            font-family: Inter, sans-serif;
+            font-size: 24px;
+            line-height: 36px;
+            font-weight: 700;
+        }
+
+
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 헤더 -->
+        <header class="header">
+            <div class="header-logo">
+                <a href="../html/mainpage.html">
+                    <img src="../img/Tulink 로고test.png" alt="튜링크 로고">
+                </a>
+            </div>
+            <div class="header-links">
+                    <a href="../html/user_edit.html">회원정보 수정하기</a>
+            </div>
+        </header>
+
+         <!-- 메인 컨텐츠 -->
+         <section class="main-content">
+            <hr>
+            <h1>마이페이지</h1>
+            <hr>
+
+            <div class = "intro">
+            <h3>'00'님의 현재 등급은 ㅇㅇㅇ입니다.</h3>
+             <!-- link 충전 버튼 -->
+            <button class = "link-button" onclick="window.location.href='#'">Link 구매하기</button>
+            </div>
+        </section>
+
+        <!-- 오늘의 일정 -->
+        <div class = "schedule">
+            <div class = "schedule-title">오늘의 일정</div>
+            <div class = "schedule-content">
+                <div class = "schedule-box">
+                    <!-- 튜터 일정 -->
+                    <h3>튜터(Tutor)</h3>
+                    <h3>오늘의 일정은 <span>'2건'</span>입니다.</h3>
+                    <div class = "schedule-item">
+                        <span>@@님</span>과의 <span>10월 31일 19:00~20:00까지</span> 튜링크 예약이 있습니다.
+                    </div>
+                    <div class = "schedule-item">
+                        <span>@@님</span>과의 <span>10월 31일 20:00~21:00까지</span> 튜링크 예약이 있습니다.
+                    </div>
+
+                    <!-- 튜터 일정 -->
+                    <h3>튜터(Tutor)</h3>
+                    <h3>오늘의 일정은 <span>'1건'</span>입니다.</h3>
+                    <div class = "schedule-item">
+                        <span>@@님</span>과의 <span>10월 31일 17:00~18:00까지</span> 튜링크 예약이 있습니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 주의사항 -->
+        <div class="note">
+            ※ 자세한 사항은 회원가입 시 기재한 연락처로 문의 바랍니다.
+        </div>
+    </div>
+</body>
+</html>
