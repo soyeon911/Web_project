@@ -238,8 +238,16 @@
                 </a>
             </div>
             <div class="header-links">
-                <a href="../html/login.html">로그인</a> | <a href="../html/signup_step1.html">회원가입</a>
+                {% if user.is_authenticated %}
+                    <span>{{ user.name }}님, 환영합니다!</span>
+                    <a href="../html/mypage.html">마이페이지</a> | 
+                    <a href="../html/mainpage.html">로그아웃</a>
+                {% else %}
+                    <a href="../html/login.html">로그인</a> | 
+                    <a href="../html/signup_step1.html">회원가입</a>
+                {% endif %}
             </div>
+            
         </header>
 
         <!-- 메인 컨텐츠 -->
