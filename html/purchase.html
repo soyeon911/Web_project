@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR 코드 결제</title>
+    <style>
+        /* 전체 페이지 스타일 */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FFFFFF;
+            color: #12177A;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* 헤더 */
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .header-logo img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 50px;
+        }
+
+        .title {
+            font-size: 40px;
+            font-weight: bold;
+            color: #12177A;
+            
+        }
+
+        /* QR 코드 박스 */
+        .qr-box {
+            width: 350px;
+            margin: -20px auto 10px;
+            padding: 5px;
+            height: 430px;
+            border: 2px solid #12177A;
+            border-radius: 10px;
+            background-color: #FFFFFF;
+        }
+
+        .qr-image {
+            width: 100%;
+            height: auto;
+        }
+
+        /* 가격 텍스트 */
+        .price-text {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        /* "홈페이지로 이동" 버튼 */
+        .back-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #FFFFFF;
+            background-color: #12177A;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #F2A900;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 헤더 -->
+        <header class="header">
+            <div class="header-logo">
+                <a href="../html/mainpage.html">
+                    <img src="../img/Tulink 로고test.png" alt="튜링크 로고">
+                </a>
+            </div>
+            <div class="title">카카오페이로 QR코드를 스캔해주세요</div>
+        </header>
+
+        <!-- QR 코드 박스 -->
+        <div class="qr-box">
+            <img id="qrImage" class="qr-image" src="" alt="QR 코드">
+            <div id="priceText" class="price-text"></div>
+        </div>
+
+        <!-- 홈페이지로 이동 버튼 -->
+        <a href="../html/mainpage.html" class="back-button">홈페이지로 이동</a>
+    </div>
+
+    <script>
+        // URL에서 쿼리 문자열 파라미터를 가져오는 함수
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // QR 코드 및 가격 정보 업데이트
+        function updateQRInfo() {
+            const links = getQueryParam('links'); // 구매한 링크 수
+            const price = getQueryParam('price'); // 가격
+
+            // QR 코드 이미지 경로 (링크 수에 따라 이미지 파일 이름 변경)
+            const qrImagePath = `../img/qr/${price}.jpeg`; // 예: qr_1.png, qr_5.png
+
+            // 이미지 업데이트
+            document.getElementById('qrImage').src = qrImagePath;
+        }
+
+        // 페이지 로드 시 QR 정보 업데이트
+        window.onload = updateQRInfo;
+    </script>
+</body>
+</html>
