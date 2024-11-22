@@ -148,16 +148,19 @@
         /* Central Dropdown */
         .central-dropdown {
             display: flex;
+            position: relative;
             justify-content: center;
-            margin-bottom: 20px;
+            align-items: center;
+            padding: 5px;
         }
 
         /* h3 Tag Styling */
         .central-dropdown h3,
         .dropdown-container h3 {
-            margin: 10px 0 10px;
-            padding-right: 8px;
-            font-size: 12px;
+            margin-left: 10px;
+            margin-right: 10px;
+            text-align: right;
+            font-size: 10px;
             color: #333;
         }
 
@@ -166,8 +169,8 @@
             display: flex;
             position: relative;
             justify-content: space-around;
-            gap: 10px;
             align-items: center;
+            padding: 5px;
         }
 
         /* Dropdown Wrapper */
@@ -182,7 +185,7 @@
         .dropbtn {
             border: 2px solid #171A1F;
             color: #555;
-            padding: 10px 20px;
+            padding: 10px;
             font-size: 13px;
             border: none;
             border-radius: 5px;
@@ -190,11 +193,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            width: 210px;
-        }
-
-        .dropbtn span {
-            margin-right: 10px;
+            width: 200px;
         }
 
         /* Dropdown Content */
@@ -235,7 +234,6 @@
             width: 100%;
             height: 100%;
             margin-top: auto;        /* 하단에 고정 */
-            margin-bottom : 50px;
         }
         .bottom-button {
             margin-top: 20px;
@@ -285,7 +283,7 @@
         <!-- 추가할 다른 콘텐츠들 -->
         <div class="content">
             <div class = "content_child">
-                <h1>회원 가입</h1>
+                <h1>회원정보수정</h1>
                 <img src = "../img/user_img1.png" alt="user 이미지">
 
                 <!-- 소속 전공 드롭박스 (중앙 배치) -->
