@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원가입 페이지 step2</title>
+    <title>Link 충전하기</title>
 
-    <!-- Swiper.js CSS CDN -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     
     <style>
@@ -16,8 +15,8 @@
             margin: 0;
             padding: 0;
             font-family: 'Inter', sans-serif;
-            background-color: #F9FAFB; /* 밝은 배경색 */
-            color: #171A1F; /* 텍스트 색상 */
+            background-color: #F9FAFB;
+            color: #171A1F;
         }
 
         /* 페이지 전체 컨테이너 */
@@ -31,20 +30,9 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            background-color: #FFFFFF; /* 흰색 배경 */
-            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+            background-color: #FFFFFF;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
-        }
-
-        /* 광고 배너 */
-        .ad-banner {
-            background-color: #E0E0E0;
-            text-align: center;
-            padding: 10px 0;
-            font-size: 14px;
-            color: #555;
-            font-weight: 500;
-            border-bottom: 1px solid #CCCCCC;
         }
 
         /* 헤더 */
@@ -59,15 +47,21 @@
             height: auto;
         }
 
-
-        .header h1 {
-            align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            line-height: 20px;
-            font-weight: 700;
-            color: #12177AFF;
+        .title {
+            font-size: 40px;
+            font-weight: bold;
+            color: #12177A;
+            margin-left: 340px;
         }
+
+        /* 보유 링크 텍스트 */
+        .subtitle {
+            font-size: 30px;
+            color: #444444;
+            margin-bottom: 20px;
+            font-weight: bold; 
+        }
+
 
         /* 본문 컨텐츠 */
         .content {
@@ -88,7 +82,7 @@
             border-top-left-radius: 10%;
             border-top-right-radius: 10%;
         }
-        
+
         .content_child {
             position: absolute;
             bottom: 0;
@@ -108,51 +102,48 @@
 
         }
 
-        .content h1 {
-            font-size: 30px;
-            line-height: 30px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            margin-top: 5px;
+        /* 가격 카드 스타일 */
+        .pricing-card {
+            background-color: #12177A;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 30px;
+            width: 75%;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 25px;
+            font-weight: bold;
+            color: #f4f4f4;
+        }
+
+        /* 할인 표시 */
+        .pricing-card .discount {
+            font-size: 20px;
+            text-decoration: line-through;
+            color: #999;
+            margin-right: 10px;
+        }
+
+        /* 최종 가격 버튼 */
+        .pricing-card .price {
+            background-color: #F2A900;
             color: black;
+            border: none;
+            padding: 10px 20px;
+            font-size: 25px;
+            font-weight: bold;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        .link-content {
-            display: absolute;
-            box-sizing: border-box;
-            background-color: #12177AFF;
-            border-radius: 20px;
-            height: 70px;
-            width: 100%;
-        }
-        
-        .link-content ul {
-            position: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: left;
-            margin-left: 30px;
-            font-size: 40px;
-            font-weight: 700;
-            color: #fff;
-            padding-top: 12px;
+        .pricing-card .price:hover {
+            background-color: #F2A900;
+            color: #0b0f51;
         }
 
-        .link-content ul ul {
-            position: flex;
-            align-items: center;
-            justify-content:space-between;
-            text-align: left;
-            margin-left: 30px;
-            font-size: 40px;
-            font-weight: 700;
-            color: #fff;
-            padding-top: 12px;
-        }
-
-        
-        
-        
     </style>
 </head>
 <body>
@@ -164,42 +155,56 @@
                     <img src="../img/Tulink 로고test.png" alt="튜링크 로고">
                 </a>
             </div>
-            <h1>Link 충전하기</h1>
+            <div class="title">Link 충전하기</div>
         </header>
-        
-        
+
         <div class="content">
             <div class = "content_child">
-                <h1><span>'오쟌'</span>님은 현재 <span>9Link</span>를 보유하고 있습니다.</h1>
-                <div class = "link-content">
-                    <ul>
-                        1 link
-                    </ul>
-                    <button class="pay-button" onclick="window.location.href='pay.html'">Tulink 하러가기</button>
+                <!-- 가격 카드들 -->
+                <div class="subtitle"><span>'오잔'</span>님은 현재 <span style="color: #f2a900; font-weight: bold;">9 Link</span>를 보유하고 있습니다.</div>
+                <div class="pricing-card">
+                    <div>1 Link</div>
+                    <button class="price" onclick="goToPurchase(1, 1900)">1,900원</button>
                 </div>
-                <div class = "link-content">
-                    <ul>
-                        5 link
-                    </ul>
-                    
+                <div class="pricing-card">
+                    <div>5 Link</div>
+                    <div>
+                        <span class="discount">9,500원</span>
+                        <button class="price" onclick="goToPurchase(5, 9000)">9,000원</button>
+                    </div>
                 </div>
-                <div class = "link-content">
-                    <ul>
-                        10 link
-                    </ul>
+                <div class="pricing-card">
+                    <div>10 Link</div>
+                    <div>
+                        <span class="discount">18,000원</span>
+                        <button class="price" onclick="goToPurchase(10, 17500)">17,500원</button>
+                    </div>
                 </div>
-                <div class = "link-content">
-                    <ul>
-                        15 link
-                    </ul>
+                <div class="pricing-card">
+                    <div>15 Link</div>
+                    <div>
+                        <span class="discount">28,500원</span>
+                        <button class="price" onclick="goToPurchase(15, 26000)">26,000원</button>
+                    </div>
                 </div>
-                <div class = "link-content">
-                    <ul>
-                        20 link
-                    </ul>
+                <div class="pricing-card">
+                    <div>20 Link</div>
+                    <div>
+                        <span class="discount">38,000원</span>
+                        <button class="price" onclick="goToPurchase(20, 34000)">34,000원</button>
+                    </div>
                 </div>
-    </div>
+            </div>
+        </div>
 
-    
+       
+
+    <script>
+        // 최종 가격 버튼 클릭 시 다른 페이지로 이동
+        function goToPurchase(linkCount, price) {
+            const purchaseUrl = `purchase.html?links=${linkCount}&price=${price}`;
+            window.location.href = purchaseUrl; // 다른 HTML 페이지로 이동
+        }
+    </script>
 </body>
 </html>
