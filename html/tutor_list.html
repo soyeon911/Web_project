@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tulink 전공 선택</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* 전체 페이지 스타일 */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #F9FAFB;
+            color: #171A1F;
+        }
+
+        /* 페이지 전체 컨테이너 */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: #FFFFFF;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        /* 헤더 */
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .header-logo img {
+            width: 100px;
+            height: auto;
+        }
+
+        .title {
+            font-size: 40px;
+            font-weight: bold;
+            color: #12177A;
+            margin-left: 50px;
+        }
+
+        .box-container {
+            padding: 30px;
+            box-shadow: #636AE8FF;
+        }
+        /* 드롭다운 컨테이너 */
+        .dropdown-container {
+            display: flex;
+            justify-content: right;
+        }
+
+        .dropdown-label {
+            font-size: 10px;
+            margin-right: 10px;
+        }
+
+        .dropdown {
+            font-size: 10px;
+            padding: 10px;
+            border: 1px solid #CCCCCC;
+            border-radius: 5px;
+            background-color: #FFFFFF;
+            color: #12177A;
+        }
+
+        /* 카드 컨테이너 */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-height: 500px; /* 스크롤 제한 높이 설정 */
+            overflow-y: auto; /* 세로 스크롤 활성화 */
+            padding: 20px;
+            border: 1px solid #CCCCCC; /* 스크롤 영역 강조 */
+            border-radius: 10px;
+            background-color: #F9FAFB;
+        }
+
+        .box-containter {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-height: 400px; /* 스크롤 제한 높이 설정 */
+            overflow-y: auto; /* 세로 스크롤 활성화 */
+            padding: 20px;
+            border: 1px solid #CCCCCC; /* 스크롤 영역 강조 */
+            border-radius: 10px;
+            background-color: #F9FAFB;
+        }
+        /* 카드 스타일 */
+        .card {
+            width: 10%; 
+            max-width: 200px; /* 카드의 최대 너비 제한 */
+            max-height: 100%;
+            padding: 20px;
+            margin-right: 20px;
+            margin-bottom: 20px;
+            background-color: #FFFFFF;
+            border: 2px solid #12177A;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 스크롤바 디자인 */
+        .box-container::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .box-container::-webkit-scrollbar-thumb {
+            background-color: #12177A; /* 스크롤바 색상 */
+            border-radius: 10px;
+        }
+
+        .box-container::-webkit-scrollbar-track {
+            background-color: #F9FAFB; /* 트랙 색상 */
+        }
+
+        .card img {
+            display: block; /* 인라인 요소를 블록 요소로 변경하여 margin을 적용 */
+            margin: 0 auto; /* 위쪽 여백 10px, 아래쪽 여백 20px, 좌우 중앙 정렬 */
+            height: 60px; /* 이미지 크기 줄이기 */
+            width: 60px; /* 이미지 크기 줄이기 */
+            border-radius: 50%; /* 원형으로 만들기 */
+            background-color: #FFFFFF; /* 배경색 */
+            padding: 10px; /* 여백 추가 */
+        }
+
+        .card-logo {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 10px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #12177A;
+            margin-bottom: 5px;
+        }
+
+        .card-subtitle {
+            font-size: 12px;
+            color: #555555;
+            margin-bottom: 10px;
+        }
+
+        .apply-button {
+            margin-top: 20px;
+            width: 100px;
+            height: 30px;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Inter, sans-serif;
+            font-size: 13px;
+            line-height: 36px;
+            font-weight: bold;
+            color: #FFFFFFFF; /* white */
+            background: #636AE8FF; /* primary-500 */
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 상단 로고 -->
+        <header class="header">
+            <div class="header-logo">
+                <a href="../html/mainpage.html">
+                    <img src="../img/Tulink 로고test.png" alt="튜링크 로고">
+                </a>
+            </div>
+
+        
+        </header>
+        <div class="dropdown-container">
+            <select id="university" class="dropdown">
+                <option value="" selected>전공</option>
+                <option value="과학기술대학">과학기술대학</option>
+                <option value="동아시아국제학부">동아시아국제학부</option>
+                <option value="보건과학대학">보건과학대학</option>
+                <option value="원주의과대학 / 의과대학">원주의과대학 / 의과대학</option>
+                <option value="인문예술대학">인문예술대학</option>
+                <option value="과학기술융합대학">과학기술융합대학</option>
+                <option value="글로벌엘리트학부">글로벌엘리트학부</option>
+                <option value="글로벌창의융합대학">글로벌창의융합대학</option>
+                <option value="RC융합대학">RC융합대학</option>
+                <option value="소프트웨어디지털헬스케어융합대학">소프트웨어디지털헬스케어융합대학</option>
+                <option value="반도체시스템공학부">반도체시스템공학부</option>
+                <option value="원주간호대학">원주간호대학</option>
+            </select>
+            <select id="university" class="dropdown">
+                <option value="" selected>세부전공</option>
+                <option value="과학기술대학">과학기술대학</option>
+                <option value="동아시아국제학부">동아시아국제학부</option>
+                <option value="보건과학대학">보건과학대학</option>
+                <option value="원주의과대학 / 의과대학">원주의과대학 / 의과대학</option>
+                <option value="인문예술대학">인문예술대학</option>
+                <option value="과학기술융합대학">과학기술융합대학</option>
+                <option value="글로벌엘리트학부">글로벌엘리트학부</option>
+                <option value="글로벌창의융합대학">글로벌창의융합대학</option>
+                <option value="RC융합대학">RC융합대학</option>
+                <option value="소프트웨어디지털헬스케어융합대학">소프트웨어디지털헬스케어융합대학</option>
+                <option value="반도체시스템공학부">반도체시스템공학부</option>
+                <option value="원주간호대학">원주간호대학</option>
+            </select>
+            <select id="university" class="dropdown">
+                <option value="" selected>가능 시간대</option>
+                <option value="과학기술대학">과학기술대학</option>
+                <option value="동아시아국제학부">동아시아국제학부</option>
+                <option value="보건과학대학">보건과학대학</option>
+                <option value="원주의과대학 / 의과대학">원주의과대학 / 의과대학</option>
+                <option value="인문예술대학">인문예술대학</option>
+                <option value="과학기술융합대학">과학기술융합대학</option>
+                <option value="글로벌엘리트학부">글로벌엘리트학부</option>
+                <option value="글로벌창의융합대학">글로벌창의융합대학</option>
+                <option value="RC융합대학">RC융합대학</option>
+                <option value="소프트웨어디지털헬스케어융합대학">소프트웨어디지털헬스케어융합대학</option>
+                <option value="반도체시스템공학부">반도체시스템공학부</option>
+                <option value="원주간호대학">원주간호대학</option>
+            </select>
+        </div>
+        
+    <div class = "box-container">
+            <div class="title">지식을 전달해 줄 오늘의 Tulink 튜터예요!</div>
+        
+
+        <!-- 전공 카드 리스트 -->
+        <div class="card-container">
+            <div class="card">
+                <img src="../img/user_img1.png" alt="소프트웨어학부 로고" class="card-logo">
+                <div class="card-subtitle">소프트웨어학부</div>
+                <div class="card-subtitle">소프트웨어학부</div>
+                <button class = "apply-button" onclick="window.location.href='apply.html'">신청하기</button>
+            </div>
+            <div class="card">
+                <img src="../img/user_img1.png" alt="작업치료학과 로고" class="card-logo">
+                <div class="card-subtitle">소프트웨어학부</div>
+                <div class="card-subtitle">작업치료학과</div>
+                <button class = "apply-button" onclick="window.location.href='apply.html'">신청하기</button>
+            </div>
+            <div class="card">
+                <img src="../img/user_img1.png" alt="데이터사이언스학부 로고" class="card-logo">
+                <div class="card-subtitle">소프트웨어학부</div>
+                <div class="card-subtitle">데이터사이언스학부</div>
+                <button class = "apply-button" onclick="window.location.href='apply.html'">신청하기</button>
+            </div>
+            <div class="card">
+                <img src="../img/user_img1.png" alt="경영학부 로고" class="card-logo">
+                <div class="card-subtitle">소프트웨어학부</div>
+                <div class="card-subtitle">경영학부</div>
+                <button class = "apply-button" onclick="window.location.href='apply.html'">신청하기</button>
+            </div>
+            <div class="card">
+                <img src="../img/user_img1.png" alt="디자인예술학부 로고" class="card-logo">
+                <div class="card-subtitle">소프트웨어학부</div>
+                <div class="card-subtitle">디자인예술학부</div>
+                <button class = "apply-button" onclick="window.location.href='apply.html'">신청하기</button>
+            </div>
+            <div class="card">
+                <img src="../img/user_img1.png" alt="철학과 로고" class="card-logo">
+                <div class="card-subtitle">소프트웨어학부</div>
+                <div class="card-subtitle">철학과</div>
+                <button class = "apply-button" onclick="window.location.href='apply.html'">신청하기</button>
+            </div>
+            <div class="card">
+                <img src="../img/user_img1.png" alt="철학과 로고" class="card-logo">
+                <div class="card-subtitle">소프트웨어학부</div>
+                <div class="card-subtitle">철학과</div>
+                <button class = "apply-button" onclick="window.location.href='apply.html'">신청하기</button>
+            </div>
+            <div class="card">
+                <img src="../img/user_img1.png" alt="철학과 로고" class="card-logo">
+                <div class="card-subtitle">소프트웨어학부</div>
+                <div class="card-subtitle">철학과</div>
+                <button class = "apply-button" onclick="window.location.href='apply.html'">신청하기</button>
+            </div>
+            <div class="card">
+                <img src="../img/user_img1.png" alt="철학과 로고" class="card-logo">
+                <div class="card-subtitle">소프트웨어학부</div>
+                <div class="card-subtitle">철학과</div>
+                <button class = "apply-button" onclick="window.location.href='apply.html'">신청하기</button>
+            </div>
+            <div class="card">
+                <img src="../img/user_img1.png" alt="철학과 로고" class="card-logo">
+                <div class="card-subtitle">소프트웨어학부</div>
+                <div class="card-subtitle">철학과</div>
+                <button class = "apply-button" onclick="window.location.href='apply.html'">신청하기</button>
+            </div>
+            <div class="card">
+                <img src="../img/user_img1.png" alt="철학과 로고" class="card-logo">
+                <div class="card-subtitle">소프트웨어학부</div>
+                <div class="card-subtitle">철학과</div>
+                <button class = "apply-button" onclick="window.location.href='apply.html'">신청하기</button>
+            </div>
+
+        </div>
+    </div>
+    </div>
+</body>
+</html>
