@@ -118,24 +118,25 @@
             background-color: #12177A;
             border-radius: 10px;
             margin-bottom: 10px;
+            padding: 10px;
         }
 
          /* 스크롤바 디자인 */
-         .sub-major::-webkit-scrollbar {
+         .ava-hours::-webkit-scrollbar {
             width: 10px;
         }
 
-        .sub-major::-webkit-scrollbar-thumb {
+        .ava-hours::-webkit-scrollbar-thumb {
             background-color: #12177A; /* 스크롤바 색상 */
             border-radius: 10px;
         }
 
-        .sub-major::-webkit-scrollbar-track {
+        .ava-hours::-webkit-scrollbar-track {
             background-color: #F9FAFB; /* 트랙 색상 */
         }
 
         /* 세부 전공 박스 */
-        .sub-major {
+        .ava-hours {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -149,7 +150,7 @@
             background-color: #F9FAFB;
         }
 
-        .sub-major-title {
+        .ava-hours-title {
             font-size: 24px;
             font-weight: bold;
             color: #4a4a9e;
@@ -160,26 +161,40 @@
             z-index: 10; /* 다른 요소보다 위로 */
         }
 
-        .sub-major ul {
-            list-style: none;
-            padding: 10px;
-            width: 200px;
-        }
-
-        .sub-major li {
+        /* 버튼 스타일 (기존 <li> 스타일을 기반으로 수정) */
+        .ava-hours-button {
             font-size: 16px;
             color: #333333;
             padding: 10px;
-            border: 1px solid #4a4a9e;
-            border-width: 4px;
+            border: 4px solid #4a4a9e;
             border-radius: 10px;
             margin-bottom: 20px;
+            background-color: #FFFFFF; /* 기본 배경 */
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            width: 200px; /* 버튼이 리스트 항목의 전체 너비를 차지하도록 */
+            text-align: center; /* 텍스트 가운데 정렬 */
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
-        .sub-major li:hover {
-            background-color: #e6e6f0;
+        /* 버튼 hover 스타일 */
+        .ava-hours-button:hover {
+            background-color: #e6e6f0; /* hover 시 밝은 배경 */
+        }
+
+        /* 버튼 active 스타일 */
+        .ava-hours-button:active {
+            background-color: #d4d4e5;
+            transform: scale(0.98); /* 클릭 시 살짝 축소 */
+        }
+
+        /* 기존 ul 리스트 스타일 조정 */
+        .ava-hours ul {
+            list-style: none; /* 리스트 스타일 제거 */
+            padding: 0; /* 여백 제거 */
+            margin: 0; /* 여백 제거 */
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* 버튼 간격 조정 */
         }
 
         /* 하단 설명 및 버튼 */
@@ -254,22 +269,22 @@
                     </div>
                 </div>
                 
-                    <div class="sub-major">
-                        <h2 class="sub-major-title">가능 시간대</h2>
+                    <div class="ava-hours">
+                        <h2 class="ava-hours-title">가능 시간대</h2>
                         <ul>
-                            <li>9:00 ~ 10:00</li>
-                            <li>10:00 ~ 11:00</li>
-                            <li>11:00 ~ 12:00</li>
-                            <li>12:00 ~ 13:00</li>
-                            <li>13:00 ~ 14:00</li>
-                            <li>14:00 ~ 15:00</li>
-                            <li>15:00 ~ 16:00</li>
-                            <li>16:00 ~ 17:00</li>
-                            <li>17:00 ~ 18:00</li>
-                            <li>18:00 ~ 19:00</li>
-                            <li>19:00 ~ 20:00</li>
-                            <li>20:00 ~ 21:00</li>
-                            <li>21:00 ~ 22:00</li>
+                            <li><button class="ava-hours-button">9:00 ~ 10:00</button></li>
+                            <li><button class="ava-hours-button">10:00 ~ 11:00</button></li>
+                            <li><button class="ava-hours-button">11:00 ~ 12:00</button></li>
+                            <li><button class="ava-hours-button">12:00 ~ 13:00</button></li>
+                            <li><button class="ava-hours-button">13:00 ~ 14:00</button></li>
+                            <li><button class="ava-hours-button">14:00 ~ 15:00</button></li>
+                            <li><button class="ava-hours-button">15:00 ~ 16:00</button></li>
+                            <li><button class="ava-hours-button">16:00 ~ 17:00</button></li>
+                            <li><button class="ava-hours-button">17:00 ~ 18:00</button></li>
+                            <li><button class="ava-hours-button">18:00 ~ 19:00</button></li>
+                            <li><button class="ava-hours-button">19:00 ~ 20:00</button></li>
+                            <li><button class="ava-hours-button">20:00 ~ 21:00</button></li>
+                            <li><button class="ava-hours-button">21:00 ~ 22:00</button></li>
                         </ul>
                     </div>
 
