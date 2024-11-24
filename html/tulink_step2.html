@@ -116,6 +116,7 @@
             font-weight: bold;
             background-color: #12177A;
             border-radius: 10px;
+            padding: 10px;
         }
 
          /* 스크롤바 디자인 */
@@ -147,38 +148,42 @@
             background-color: #F9FAFB;
         }
 
-        .sub-major-title {
-            font-size: 24px;
-            font-weight: bold;
-            color: #4a4a9e;
-            margin-bottom: 600px;
-            margin-top: -50px;
-            text-align: center;
-            position: absolute; /* 기준이 필요 */
-            z-index: 10; /* 다른 요소보다 위로 */
-        }
-
-        .sub-major ul {
-            list-style: none;
-            padding: 10px;
-            width: 200px;
-        }
-
-        .sub-major li {
+        /* 버튼 스타일 (기존 <li> 스타일을 기반으로 수정) */
+        .sub-major-button {
             font-size: 16px;
             color: #333333;
             padding: 10px;
-            border: 1px solid #4a4a9e;
-            border-width: 4px;
+            border: 4px solid #4a4a9e;
             border-radius: 10px;
             margin-bottom: 20px;
+            background-color: #FFFFFF; /* 기본 배경 */
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            width: 100%; /* 버튼이 리스트 항목의 전체 너비를 차지하도록 */
+            text-align: center; /* 텍스트 가운데 정렬 */
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
-        .sub-major li:hover {
-            background-color: #e6e6f0;
+        /* 버튼 hover 스타일 */
+        .sub-major-button:hover {
+            background-color: #e6e6f0; /* hover 시 밝은 배경 */
         }
+
+        /* 버튼 active 스타일 */
+        .sub-major-button:active {
+            background-color: #d4d4e5;
+            transform: scale(0.98); /* 클릭 시 살짝 축소 */
+        }
+
+        /* 기존 ul 리스트 스타일 조정 */
+        .sub-major ul {
+            list-style: none; /* 리스트 스타일 제거 */
+            padding: 0; /* 여백 제거 */
+            margin: 0; /* 여백 제거 */
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* 버튼 간격 조정 */
+        }
+
 
         /* 하단 설명 및 버튼 */
         .bottom-container {
@@ -251,25 +256,17 @@
                     </div>
                 </div>
                 
-                    <div class="sub-major">
-                        <h2 class="sub-major-title">세부전공</h2>
-                        <ul>
-                            <li>웹프로그래밍</li>
-                            <li>컴퓨터 프로그래밍</li>
-                            <li>선형대수입문</li>
-                            <li>모바일 프로그래밍</li>
-                            <li>인공지능</li>
-                            <li>인공지능</li>
-                            <li>인공지능</li>
-                            <li>인공지능</li>
-                            <li>인공지능</li>
-                            <li>인공지능</li>
-                            <li>인공지능</li>
-                            <li>인공지능</li>
-                            <li>인공지능</li>
-
-                        </ul>
-                    </div>
+                <div class="sub-major">
+                    <ul>
+                        <li><button class="sub-major-button">웹프로그래밍</button></li>
+                        <li><button class="sub-major-button">컴퓨터 프로그래밍</button></li>
+                        <li><button class="sub-major-button">선형대수입문</button></li>
+                        <li><button class="sub-major-button">모바일 프로그래밍</button></li>
+                        <li><button class="sub-major-button">인공지능</button></li>
+                        <li><button class="sub-major-button">머신러닝</button></li>
+                        <li><button class="sub-major-button">데이터베이스</button></li>
+                    </ul>
+                </div>
 
             </div>
             <div class="bottom-container">
