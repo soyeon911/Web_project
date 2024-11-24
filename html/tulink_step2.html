@@ -91,7 +91,7 @@
             margin-right: 20px;
             margin-bottom: 20px;
             background-color: #FFFFFF;
-            border: 2px solid #12177A;
+            border: 4px solid #12177A;
             border-radius: 10px;
             text-align: center;
         }
@@ -117,6 +117,21 @@
             background-color: #12177A;
             border-radius: 10px;
         }
+
+         /* 스크롤바 디자인 */
+         .sub-major::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .sub-major::-webkit-scrollbar-thumb {
+            background-color: #12177A; /* 스크롤바 색상 */
+            border-radius: 10px;
+        }
+
+        .sub-major::-webkit-scrollbar-track {
+            background-color: #F9FAFB; /* 트랙 색상 */
+        }
+
         /* 세부 전공 박스 */
         .sub-major {
             display: flex;
@@ -127,7 +142,7 @@
             width: 300px;
             overflow-y: auto; /* 세로 스크롤 활성화 */
             padding: 20px;
-            border: 1px solid #12177AFF; /* 스크롤 영역 강조 */
+            border: 4px solid #12177A; /* 스크롤 영역 강조 */
             border-radius: 10px;
             background-color: #F9FAFB;
         }
@@ -146,6 +161,7 @@
         .sub-major ul {
             list-style: none;
             padding: 10px;
+            width: 200px;
         }
 
         .sub-major li {
