@@ -51,16 +51,19 @@
             margin-top: auto;
         }
 
+        #edit-account,
         #delete-account {
-            text-decoration: none;
-            color: #636AE8; /* 원하는 색상 */
+            color: #565E6CFF; /* 원하는 색상 */
             font-size: 16px;
             cursor: pointer;
             margin-left: 5px;
         }
 
+        #edit-account:hover {
+            color: #565E6CFF;
+        }
         #delete-account:hover {
-            color: #4850E4; /* hover 색상 */
+            color: #565E6CFF; /* hover 색상 */
         }
 
         /* 메인 컨텐츠 */
@@ -201,7 +204,7 @@
                 </a>
             </div>
             <div class="header-links">
-                <a href="../html/user_edit.html">회원정보 수정하기 </a>
+                <a href="../html/user_edit.html" id = "edit-account">회원정보 수정하기 </a>
                 <a href="../html/mainpage.html" id="delete-account" onclick="deleteAccount()"> 회원 탈퇴하기</a>
             </div>
         </header>
