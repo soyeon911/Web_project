@@ -51,6 +51,18 @@
             margin-top: auto;
         }
 
+        #delete-account {
+            text-decoration: none;
+            color: #636AE8; /* 원하는 색상 */
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        #delete-account:hover {
+            color: #4850E4; /* hover 색상 */
+        }
+
         /* 메인 컨텐츠 */
         .main-content {
             background-color: #fff;
@@ -189,7 +201,8 @@
                 </a>
             </div>
             <div class="header-links">
-                <a href="../html/user_edit.html">회원정보 수정하기</a>
+                <a href="../html/user_edit.html">회원정보 수정하기 </a>
+                <a href="../html/mainpage.html" id="delete-account" onclick="deleteAccount()"> 회원 탈퇴하기</a>
             </div>
         </header>
 
@@ -242,5 +255,55 @@
             </div>
         </div>
     </div>
+    <script>
+        function deleteAccount() {
+            // 사용자가 삭제를 확인하는 경우
+            const userConfirmed = confirm("정말로 회원 탈퇴를 진행하시겠습니까? 탈퇴 후 복구할 수 없습니다.");
+            if (userConfirmed) {
+                sendDeleteRequest(); // 탈퇴 요청 함수 호출
+            }
+        }
+    
+        async function sendDeleteRequest() {
+            try {
+                const response = await fetch('/delete_user/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken'), // Django CSRF 토큰
+                    },
+                    body: JSON.stringify({ confirm: true }) // 서버에 데이터 전달
+                });
+    
+                if (response.ok) {
+                    alert("회원 탈퇴가 완료되었습니다.");
+                    window.location.href = 'mainpage.html'; // 메인 페이지로 리다이렉트
+                } else {
+                    alert("회원 탈퇴에 실패했습니다. 다시 시도해주세요.");
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                alert("오류가 발생했습니다. 다시 시도해주세요.");
+            }
+        }
+    
+        // CSRF 토큰 가져오기 (Django용)
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    </script>
+    
+    
 </body>
 </html>
