@@ -372,34 +372,50 @@ def do_tulink1(request):
     - GET 요청: 선택 가능한 단과대학과 전공 데이터를 템플릿에 전달.
     """
     if request.method == 'POST':  # POST 요청 처리
-        # 세션에서 현재 로그인된 사용자 ID를 가져오고, User 객체를 조회
-        user = User.objects.get(id=request.session['user_id'])
+        user_id = request.session.get('user_id')
+        if not user_id:
+            return redirect('webapp:login')  # 로그인 페이지로 리디렉션
+
+        try:
+            user = User.objects.get(id=user_id)
+        except User.DoesNotExist:
+            return redirect('webapp:login')  # 로그인 페이지로 리디렉션
+
+        selected_college = request.POST.get('college')  # 선택된 단과대
+        selected_major = request.POST.get('major')  # 선택된 전공
 
         # DoTulink 객체를 생성하거나 기존 객체를 업데이트
         tulink_entry, created = DoTulink.objects.get_or_create(user=user)
-        tulink_entry.college = request.POST.get('college')  # 선택된 단과대학
-        selected_major = request.POST.get('major')  # 선택된 전공
+        tulink_entry.college = selected_college  # 단과대 저장
         tulink_entry.major = selected_major  # 전공 저장
         tulink_entry.save()  # 변경 사항 저장
 
         # 선택된 전공을 세션에 저장 (다음 단계에서 활용 가능)
+        request.session['selected_college'] = selected_college
         request.session['selected_major'] = selected_major
 
         # 다음 단계로 리디렉션
         return redirect('webapp:do_tulink2')
 
     # GET 요청 처리: 사용자에게 선택 가능한 단과대학 및 전공 데이터를 제공
-    # UserTulink 객체에서 데이터 가져오기 (기본 데이터를 제공하는 테이블)
     tulink_data = UserTulink.objects.first()
+    if not tulink_data:
+        return render(request, 'webapp/do_tulink1.html', {
+            'colleges': [],
+            'majors': [],
+            'error_message': '데이터를 불러올 수 없습니다. 관리자에게 문의하세요.'
+        })
+
     context = {
         # 단과대학 리스트 (콤마로 구분된 데이터)
-        'colleges': tulink_data.college.split(",") if tulink_data and tulink_data.college else [],
+        'colleges': [college.strip() for college in tulink_data.college.split(",")] if tulink_data.college else [],
         # 전공 리스트 (줄바꿈으로 구분된 데이터)
-        'majors': tulink_data.tutoring_major.split("\n") if tulink_data and tulink_data.tutoring_major else [],
+        'majors': [major.strip() for major in tulink_data.tutoring_major.split("\n")] if tulink_data.tutoring_major else [],
     }
 
     # 선택 화면 렌더링
     return render(request, 'webapp/do_tulink1.html', context)
+
 
 #---------------------------------------구분선-------------------------------------------
 #---------------------------------------구분선-------------------------------------------

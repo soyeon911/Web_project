@@ -55,24 +55,49 @@
             padding: 30px;
             box-shadow: #636AE8FF;
         }
-        /* 드롭다운 컨테이너 */
-        .dropdown-container {
-            margin-bottom: 30px;
-            margin-top: -20px;
+        /* 중앙 드롭박스 */
+        .central-dropdown {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            gap: 10px; /* h3와 드롭박스 사이 간격 */
+            align-items: center; /* 텍스트와 드롭박스를 수평으로 정렬 */
+        }
+        /* h3 Tag Styling */
+        .central-dropdown h3,
+        .dropdown-container h3 {
+            margin: 10px 0 10px;
+            padding-right: 10px;
+            font-size: 15px;
+            color: #333;
         }
 
-        .dropdown-label {
-            font-size: 16px;
-            margin-right: 10px;
-        }
-
+        /* Dropdown Wrapper */
         .dropdown {
-            font-size: 16px;
-            padding: 10px;
-            border: 1px solid #CCCCCC;
+            position: relative;
+            display: inline-block;
+            align-items: center;
+            gap: 10px;
+
+        }
+
+         /* Dropdown Button */
+        .dropbtn {
+            border: 2px solid #171A1F;
+            color: #555;
+            padding: 10px 20px;
+            font-size: 13px;
+            /*border: none;*/
             border-radius: 5px;
-            background-color: #FFFFFF;
-            color: #12177A;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 200px;
+        }
+
+        .dropbtn span {
+            margin-right: 10px;
         }
 
         /* 카드 컨테이너 */
@@ -207,30 +232,20 @@
                     <img src="{% static 'Tulink 로고test.png' %}" alt="튜링크 로고">
                 </a>
             </div>
-            <div class="title">Tulink하고 싶은 전공을 선택하세요</div>
+            <div class="title">Tulink하고 싶은 전공을 선택하세요 싫은데???</div>
         </header>
 
         <div class = "box-container">
             <!-- 단과대학 선택 -->
-            <div class="dropdown-container">
-                <label for="university" class="dropdown-label">단과대학</label>
-                <select id="university" class="dropdown">
-                    <option value="" selected>선택하기</option>
-                    <option value="과학기술대학">과학기술대학</option>
-                    <option value="동아시아국제학부">동아시아국제학부</option>
-                    <option value="보건과학대학">보건과학대학</option>
-                    <option value="원주의과대학 / 의과대학">원주의과대학 / 의과대학</option>
-                    <option value="인문예술대학">인문예술대학</option>
-                    <option value="과학기술융합대학">과학기술융합대학</option>
-                    <option value="글로벌엘리트학부">글로벌엘리트학부</option>
-                    <option value="글로벌창의융합대학">글로벌창의융합대학</option>
-                    <option value="RC융합대학">RC융합대학</option>
-                    <option value="소프트웨어디지털헬스케어융합대학">소프트웨어디지털헬스케어융합대학</option>
-                    <option value="반도체시스템공학부">반도체시스템공학부</option>
-                    <option value="원주간호대학">원주간호대학</option>
-                </select>
+            <div class="central-dropdown">
+                <div class="dropdown">
+                    <select id="college" class = "dropbtn" name="college" required>  <!-- 단과대 선택 드롭다운 -->
+                        {% for college in colleges %}  <!-- 서버에서 받은 단과대 목록을 반복 -->
+                        <option value="{{ college }}">{{ college }}</option>  <!-- 단과대 항목 추가 -->
+                        {% endfor %}
+                    </select>
+                </div>
             </div>
-
 
             <!-- 카드 선택 -->
             <form id="major-form" method="POST" action="{% url 'webapp:do_tulink1' %}">
@@ -242,7 +257,7 @@
                             <div class="card-title">{{ major }}</div>
                         </div>
 
-                        {% endfor %}
+                    {% endfor %}
 
                 </div>
                 <!-- 선택된 전공 저장 -->
@@ -269,6 +284,7 @@
                 });
             });
         });
+
 
         function selectMajor(major) {
             console.log("선택된 전공:", major);
