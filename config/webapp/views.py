@@ -6,21 +6,35 @@
 - `models.py`: 데이터베이스 테이블을 정의한 모델 파일
 - `forms.py`: 사용자 입력을 처리하는 폼 정의
 - `urls.py`: 각 뷰와 연결된 URL 패턴 정의
-- HTML 템플릿 파일들: `templates/webapp/` 폴더에 위치한 템플릿 (e.g., `signup_step1.html`, `signup_step2.html`, `signup_step3.html`)
+- HTML 템플릿 파일들
 
-이 파일은 다음과 같은 뷰를 제공합니다:
-1. `index`: 메인 페이지
-2. `login_view`: 로그인 페이지
-3. `signup_step1`: 회원가입 1단계 (별명, 이메일, 비밀번호 입력)
-4. `signup_step2`: 회원가입 2단계 (전공 및 세부 정보 입력)
-5. `signup_step3`: 회원가입 3단계 (가능 요일 및 시간대 입력)
-
-
-11.22
-11.25
-11.26
-11.28수정111223
-11.29/1/2/3/4/5/6/7/
+11.4 수정 123
+11.5 수정 123456
+11.7 수정 1234567
+11.8 수정 1234
+11.9 수정 123456
+11.10 수정 123
+11.11 수정 12345
+11.12 수정 123456
+11.13 수정 123
+11.14 수정 123456
+11.15 수정 1234567
+11.16 수정 12
+11.17 수정 123456
+11.18 수정 1234567891011
+11.19 수정 12345
+11.20 수정 123456
+11.21 수정 123456
+11.22 수정 1234567891011121314
+11.23 수정 1
+11.24 수정 123456
+11.25 수정 123456789101112
+11.26 수정 12345678
+11.28 수정 12345678910
+11.28 수정 1234567
+11.29 수정 123456789010112131415
+11.30 수정 1234567890101121314151617181920
+12.1 수정 유저 이미지수정
 """
 import unicodedata  # 문자열 정규화를 위한 모듈
 
@@ -687,11 +701,14 @@ def choice_tulink(request):
     for user in final_users:
         print(user)  # 매칭된 사용자 정보를 출력 (디버깅용)
 
+
+
     # 템플릿으로 전달할 컨텍스트 데이터 정의
     context = {
         'users': User.objects.all(),  # 전체 사용자 정보 (필요하다면 필터링 가능)
         'latest_record': latest_record,  # 현재 로그인한 사용자의 Dotulink 데이터
         'matching_users': final_users,  # 매칭된 사용자 리스트
+
     }
     return render(request, 'webapp/choice_tulink.html', context)  # choice_tulink.html 템플릿 렌더링
 
@@ -1086,7 +1103,7 @@ def buy_link_view(request):
     link_balance, _ = UserLink.objects.get_or_create(user=user, defaults={"link_balance": 5})
 
     # 4. 메달 이미지 설정
-    medal_image = staticfiles_storage.url("road.jpg") if usage_count.usage_count > 49 else staticfiles_storage.url("library.jpg")
+    medal_image = staticfiles_storage.url("gol_medal.png") if usage_count.usage_count > 49 else staticfiles_storage.url("sil_medal.png")
 
     # 5. Link 잔액 텍스트 색상 결정
     link_color = "gold" if usage_count.usage_count > 49 else "silver"

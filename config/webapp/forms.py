@@ -7,5 +7,3 @@ class TutoringMajorForm(forms.Form):
     tutoring_sub_major = forms.CharField(max_length=100, required=False, label="Tutoring Sub-Major")
 
 
-
-
